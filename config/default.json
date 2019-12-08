@@ -1,0 +1,47 @@
+{
+  "podname": "",
+  "namespace": "",
+  "redis": {
+    "lock": {
+      "uri": ""
+    },
+    "cache": {
+      "uri": ""
+    },
+    "expire": {
+      "uri": ""
+    },
+    "filter": {
+      "uri": ""
+    },
+    "throttle": {
+      "uri": ""
+    }
+  },
+  "typeorm": {
+    "synchronize": true,
+    "type": "postgres",
+    "logging": false,
+    "url": ""
+  },
+  "http": {
+    "listenPort": 3000,
+    "listenAddress": "0.0.0.0"
+  },
+  "kafka": {
+    "connection": {
+      "kafkaHost": "",
+      "groupId": "sheng-service"
+    },
+    "producers": {
+      "delayQueue": {
+        "topic": "delay-queue"
+      }
+    },
+    "consumers": {
+      "delayQueue": {
+        "topic": "delay-queue"
+      }
+    }
+  }
+}

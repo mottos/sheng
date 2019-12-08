@@ -1,0 +1,29 @@
+{
+  "postgres": {
+    "uri": "POSTGRES_URI"
+  },
+  "redis": {
+    "lockUri": "LOCK_REDIS_URI",
+    "cacheUri": "CACHE_REDIS_URI",
+    "expireUri": "EXPIRE_REDIS_URI",
+    "filterUri": "FILTER_REDIS_URI",
+    "throttleUri": "THROTTLE_REDIS_URI"
+  },
+  "kafka": {
+    "connection": {
+      "kafkaHost": "KAFKA_HOST"
+    },
+    "producers": {
+      "delayQueue": {
+        "topic": "DELAY_QUEUE"
+      }
+    },
+    "consumers": {
+      "delayQueue": {
+        "topic": "DELAY_QUEUE"
+      }
+    }
+  },
+  "podname": "POD_NAME",
+  "namespace": "POD_NAMESPACE"
+}
