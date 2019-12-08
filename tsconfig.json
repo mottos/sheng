@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictNullChecks": true,
+    "strict": true,
+    "alwaysStrict": true,
+    "module": "commonjs",
+    "outDir": "dist/",
+    "noEmitHelpers": true,
+    "importHelpers": true,
+    "sourceMap": true,
+    "declaration": true,
+    "lib": ["es2017"],
+    "skipLibCheck": true,
+    "noEmit": false,
+    "incremental": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "types": ["node", "reflect-metadata"]
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": ["**/node_modules", "dist"]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "sheng",
+  "version": "1.0.0",
+  "description": "Sheng: A delay-queue middleware based on Redis & Kafka",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "concurrently --handle-input \"tsc -w -p tsconfig.json\" \"nodemon\" ",
+    "test": "jest"
+  },
+  "author": "Chalin Shi",
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "@sensejs/config": "0.0.11",
+    "@sensejs/core": "0.0.11",
+    "@sensejs/http": "0.0.11",
+    "@sensejs/kafka": "0.0.11",
+    "@sensejs/logger": "0.0.11",
+    "@sensejs/redis": "0.0.11",
+    "@sensejs/typeorm": "0.0.11",
+    "bluebird": "^3.7.1",
+    "config": "^3.2.4",
+    "inversify": "^5.0.1",
+    "ioredis": "^4.14.1",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "ts-enum-util": "^4.0.1",
+    "typeorm": "^0.2.20",
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/config": "0.0.36",
+    "@types/ioredis": "^4.0.19",
+    "@types/jest": "^24.0.23",
+    "@types/lodash": "^4.14.146",
+    "@types/node": "^12.12.7",
+    "@types/uuid": "^3.4.6",
+    "concurrently": "^5.0.0",
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.4",
+    "prettier": "^1.19.1",
+    "reflect-metadata": "^0.1.13",
+    "ts-jest": "^24.1.0",
+    "ts-node": "^8.5.0",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.2"
+  },
+  "apidoc": {
+    "title": "Sheng-api docs browser title",
+    "url": ""
+  }
+}

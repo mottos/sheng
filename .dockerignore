@@ -1,0 +1,32 @@
+# git目录
+.git
+# node 依赖
+node_modules
+# 静态文件
+assets
+!assets/nexmo
+!assets/locales
+# 文档
+docs
+test
+# 覆盖率文件
+coverage
+# 日志文件及其打包
+logs
+logs.gzip
+# 编辑器配置
+.vscode
+# docker 相关文件
+.dockerfile
+docker-compose.yml
+# 本地配置文件
+config/development.json
+config/production.json
+config/test.json
+# pretty
+.prettierrc
+# nodemon
+nodemon-debug.json
+nodemon.json
+# nest
+nest-cli.json
