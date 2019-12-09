@@ -1,18 +1,19 @@
-import { HttpModule as DefaultHttpModule } from '@sensejs/http';
 import { InjectLogger, Logger } from '@sensejs/core';
 import { TypeOrmSupportInterceptor } from '@sensejs/typeorm';
+import { HttpModule as DefaultHttpModule } from '@sensejs/http';
 import { BucketModule } from '../bucket/bucket.module';
 import { QueueModule } from '../queue/queue.module';
 import { TaskModule } from '../task/task.module';
 import { RedisModule } from '../redis/redis.module';
 import { TypeOrmModule } from '../typeorm/typeorm.module';
-import { AuthzInterceptor } from '../../interceptors/request-authz';
 import { BucketController } from './bucket.controller';
 import { QueueController } from './queue.controller';
 import { TaskController } from './task.controller';
 import { ConfigModule } from '../config/config.module';
 import { ConsumerModule } from '../kafka/consumer.module';
 import { ProducerModule } from './../kafka/producer.module';
+import { TracingInterceptor } from '../../interceptors/tracing';
+import { TimingInterceptor } from '../../interceptors/timing';
 
 export class HttpModule extends DefaultHttpModule({
   requires: [
@@ -29,10 +30,10 @@ export class HttpModule extends DefaultHttpModule({
     BucketController,
     QueueController,
     TaskController,
-    AuthzInterceptor,
   ],
   globalInterceptors: [
-    AuthzInterceptor,
+    TracingInterceptor,
+    TimingInterceptor,
     TypeOrmSupportInterceptor,
   ],
   injectOptionFrom: 'config.http',

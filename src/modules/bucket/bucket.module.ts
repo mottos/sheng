@@ -1,9 +1,9 @@
 import { Module, InjectLogger, Logger } from '@sensejs/core';
-import { BucketService, OnceBucketService, CyclicBucketService } from './bucket.service';
+import { OnceBucketService, CyclicBucketService } from './bucket.service';
 
 export class BucketModule extends Module({
   requires: [],
-  components: [BucketService, OnceBucketService, CyclicBucketService],
+  components: [OnceBucketService, CyclicBucketService],
 }) {
   constructor(@InjectLogger(BucketModule) private logger: Logger) {
     super();

@@ -1,9 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
 import { BucketType } from '../../constants/bucket';
-import { BaseEntity } from '../../commons/base-entity';
 
 @Entity()
-export class Task extends BaseEntity {
+export class Task {
 
   @PrimaryGeneratedColumn('uuid', {comment: '任务主键'})
   id!: string;
@@ -22,4 +21,10 @@ export class Task extends BaseEntity {
 
   @Column({type: 'json', default: {}, comment: '任务内容元信息'})
   metadata!: object;
+
+  @CreateDateColumn({type: 'timestamp', default: 'now', comment: '创建时间'})
+  createdTime!: number;
+
+  @CreateDateColumn({type: 'timestamp', nullable: true, comment: '更新时间'})
+  updatedTime?: number;
 }

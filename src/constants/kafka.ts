@@ -10,17 +10,12 @@ const ConsumerTopicsMap = consumers as { [idx: string]: any };
 
 // tslint:disable-next-line:no-namespace
 export namespace ProducerTopicNames {
-  export const esLog = ProducerTopicsMap.esLog.topic;
-  export const deviceEvent = ProducerTopicsMap.deviceEvent.topic;
-  export const deviceAlarm = ProducerTopicsMap.deviceAlarm.topic;
-  export const deviceUplink = ProducerTopicsMap.deviceUplink.topic;
-  export const deviceMalfunction = ProducerTopicsMap.deviceMalfunction.topic;
+  export const delayQueue = ProducerTopicsMap.delayQueue.topic;
 }
 
 // tslint:disable-next-line:no-namespace
 export namespace ConsumerTopicNames {
-  export const deviceUplink = ConsumerTopicsMap.deviceUplink.topic;
-  export const merchantEvent = ConsumerTopicsMap.merchantEvent.topic;
+  export const delayQueue = ConsumerTopicsMap.delayQueue.topic;
 }
 
 export enum Action {

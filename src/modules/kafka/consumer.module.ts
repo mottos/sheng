@@ -3,25 +3,19 @@ import { KafkaConsumerModule } from '@sensejs/kafka';
 import { TypeOrmSupportInterceptor } from '@sensejs/typeorm';
 import { ProducerModule } from './producer.module';
 import { ConsumerService } from './consumer.service';
-import { DeviceModule } from '../device/device.module';
+import { TaskModule } from '../task/task.module';
 import { ConfigModule } from '../config/config.module';
-import { MerchantModule } from '../merchant/merchant.module';
-import { MicrospotModule } from '../microspot/microspot.module';
 import { ProcessorModule } from '../processor/processor.module';
-import { DeviceFactoryModule } from '../factory/device-factory.module';
-import { DeviceEventSubsciber, MerchantEventSubscriber } from './consumer.controller';
+import { TaskEventSubscriber } from './consumer.controller';
 
 export class ConsumerModule extends KafkaConsumerModule({
   requires: [
     ConfigModule,
-    DeviceModule,
+    TaskModule,
     ProducerModule,
-    MerchantModule,
     ProcessorModule,
-    MicrospotModule,
-    DeviceFactoryModule,
   ],
-  components: [DeviceEventSubsciber, MerchantEventSubscriber, ConsumerService],
+  components: [TaskEventSubscriber, ConsumerService],
   globalInterceptors: [TypeOrmSupportInterceptor],
   injectOptionFrom: 'config.kafka.connection'
 }) {

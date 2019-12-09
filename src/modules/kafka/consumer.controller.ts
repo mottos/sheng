@@ -2,46 +2,25 @@ import { inject } from 'inversify';
 import { InjectLogger, Logger } from '@sensejs/core';
 import { SubscribeController, SubscribeTopic, Message, KafkaMessage } from '@sensejs/kafka';
 import { ConsumerService } from './consumer.service';
-import { WebhookDomainMessage, MerchantDomainMessage } from '../../constants/kafka';
+import { TaskDomainMessage } from '../../constants/kafka';
 
 @SubscribeController({interceptors: []})
-export class DeviceEventSubsciber {
+export class TaskEventSubscriber {
   constructor(
-    @InjectLogger(DeviceEventSubsciber) private readonly logger: Logger,
+    @InjectLogger(TaskEventSubscriber) private readonly logger: Logger,
     @inject(ConsumerService) private readonly consumerService: ConsumerService,
   ) {
   }
 
-  @SubscribeTopic({injectOptionFrom: 'config.kafka.consumers.deviceUplink'})
-  async handleDeviceEvent(@Message() message: KafkaMessage) {
+  @SubscribeTopic({injectOptionFrom: 'config.kafka.consumers.delayQueue'})
+  async handleTaskEvent(@Message() message: KafkaMessage) {
     if (typeof message.value !== 'string') {
       message.value = message.value.toString();
     }
     const {topic, value} = message;
-    this.logger.log('Debug: DeviceEventSubsciber -> handleDeviceEvent -> topic, value', topic, value);
-    const kafkaMessage: WebhookDomainMessage = JSON.parse(value);
+    this.logger.log('Debug: TaskEventSubsciber -> handleTaskEvent -> topic, value', topic, value);
+    const kafkaMessage: TaskDomainMessage = JSON.parse(value);
     const { data } = kafkaMessage;
-    this.consumerService.deviceHandler(topic, data);
-  }
-}
-
-@SubscribeController()
-export class MerchantEventSubscriber {
-  constructor(
-    @InjectLogger(MerchantEventSubscriber) private readonly logger: Logger,
-    @inject(ConsumerService) private readonly consumerService: ConsumerService,
-  ) {
-  }
-
-  @SubscribeTopic({option: {consumeTimeout: 30000}, injectOptionFrom: 'config.kafka.consumers.merchantEvent'})
-  async handleMerchantEvent(@Message() message: KafkaMessage) {
-    if (typeof message.value !== 'string') {
-      message.value = message.value.toString();
-    }
-    const {topic, value} = message;
-    this.logger.log('Debug: DeviceEventSubsciber -> handleDeviceEvent -> topic, value', topic, value);
-    const kafkaMessage: MerchantDomainMessage = JSON.parse(value);
-    const { data } = kafkaMessage;
-    this.consumerService.merchantHandler(topic, data);
+    this.consumerService.taskHandler(topic, data);
   }
 }

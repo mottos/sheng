@@ -23,6 +23,6 @@ export class ProducerService {
       data: task,
     };
     this.logger.info(`[publishExecutedTask] ${task.id} 发送任务执行消息: ${JSON.stringify(kafkaMessage)}`);
-    return this.producer.produceMessage(ProducerTopicNames.deviceEvent, JSON.stringify(kafkaMessage));
+    return this.producer.produceMessage(ProducerTopicNames.delayQueue, JSON.stringify(kafkaMessage));
   }
 }
